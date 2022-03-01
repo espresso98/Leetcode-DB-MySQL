@@ -1,11 +1,19 @@
 -- Write an SQL query to find the IDs of the users who visited without making any transactions and the number of times they made these types of visits.
 
+--Solution1
+SELECT customer_id, COUNT(visit_id) AS count_no_trans 
+FROM Visits 
+WHERE visit_id NOT IN (SELECT visit_id FROM Transactions)
+GROUP BY 1
+ORDER BY 2
 
+
+--Solution2
 SELECT customer_id, COUNT(visit_id) AS count_no_trans 
 FROM Visits v
 LEFT JOIN Transactions USING(visit_id)
-WHERE v.visit_id NOT IN (SELECT visit_id FROM Transactions)
-GROUP BY customer_id
+WHERE v.visit_id IS NULL
+GROUP BY 1
 ORDER BY 2
 
 
