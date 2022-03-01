@@ -11,8 +11,8 @@ ORDER BY 2
 --Solution2
 SELECT customer_id, COUNT(visit_id) AS count_no_trans 
 FROM Visits v
-LEFT JOIN Transactions USING(visit_id)
-WHERE v.visit_id IS NULL
+LEFT JOIN Transactions t USING(visit_id)
+WHERE t.visit_id IS NULL
 GROUP BY 1
 ORDER BY 2
 
