@@ -1,9 +1,18 @@
 -- Write an SQL query to calculate the bonus of each employee. The bonus of an employee is 100% of their salary if the ID of the employee is an odd number and the employee name does not start with the character 'M'. The bonus of an employee is 0 otherwise.
 -- Return the result table ordered by employee_id.
 
-
+--Solution1
 SELECT employee_id, 
        IF(employee_id%2=1 && name NOT LIKE 'M%', salary, 0) AS bonus
+FROM Employees
+ORDER BY 1
+
+--Solution2
+SELECT employee_id,
+       CASE 
+            WHEN MOD(employee_id, 2) = 1 AND name NOT LIKE 'M%' THEN salary
+            ELSE 0
+       END AS bonus
 FROM Employees
 ORDER BY 1
 
