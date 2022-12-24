@@ -9,7 +9,6 @@ WITH freq_rank AS (
 SELECT customer_id, product_id, product_name
 FROM freq_rank
 WHERE rnk = 1 
-ORDER BY customer_id, product_id
 
 /* Input: 
 Customers table:
