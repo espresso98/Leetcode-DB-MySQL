@@ -4,6 +4,6 @@ FROM Books
 WHERE available_from < DATE_SUB('2019-06-23', INTERVAL 1 MONTH)
 AND book_id NOT IN (
     SELECT book_id FROM Orders 
-    WHERE dispatch_date BETWEEN '2018-06-23' AND '2019-06-23'
+    WHERE dispatch_date > DATE_SUB('2019-06-23', INTERVAL 1 YEAR)
     GROUP BY book_id
     HAVING SUM(quantity) >= 10)
