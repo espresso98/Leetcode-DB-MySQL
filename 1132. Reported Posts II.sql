@@ -2,10 +2,9 @@
 
 SELECT ROUND(AVG(cnt_pct), 2) AS average_daily_percent 
 FROM (
-    SELECT (COUNT(DISTINCT r.post_id)/ COUNT(DISTINCT a.post_id)) * 100  AS cnt_pct
+    SELECT (COUNT(DISTINCT r.post_id) / COUNT(DISTINCT a.post_id)) * 100  AS cnt_pct
     FROM Actions a
-    LEFT JOIN Removals r
-    ON a.post_id = r.post_id
+    LEFT JOIN Removals r ON a.post_id = r.post_id
     WHERE extra='spam'
     GROUP BY action_date) tmp
 
