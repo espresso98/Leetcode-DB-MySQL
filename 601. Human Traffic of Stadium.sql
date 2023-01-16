@@ -3,10 +3,10 @@
 -- Solution1
 WITH consecutive_days AS (
     SELECT id, visit_date, people, 
-        LEAD(id, 1) OVER(ORDER BY id) AS next1,
-        LEAD(id, 2) OVER(ORDER BY id) AS next2,
-        LAG(id, 1)  OVER(ORDER BY id) AS prev1,
-        LAG(id, 2)  OVER(ORDER BY id) AS prev2
+        LEAD(id, 1) OVER (ORDER BY id) AS next1,
+        LEAD(id, 2) OVER (ORDER BY id) AS next2,
+        LAG(id, 1)  OVER (ORDER BY id) AS prev1,
+        LAG(id, 2)  OVER (ORDER BY id) AS prev2
     FROM Stadium
     WHERE people >= 100
 )
